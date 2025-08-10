@@ -21,7 +21,7 @@ WannaCry_HTA 是一个基于 HTA（HTML Application）技术开发的高度仿�
 
 3、调用VBS对WannaCry_HTA.exe目录下除exe文件外的所有文件修改后缀名为.WNCRY
 
-![img](README.assets/image-20250811001505006-17548452849731.png)
+![img](README.assets/image-20250811001505006.png)
 
 ![image-20250811001656732](README.assets/image-20250811001656732.png)
 
@@ -70,5 +70,6 @@ WannaCry_HTA 是一个基于 HTA（HTML Application）技术开发的高度仿�
 3、目前仅在Win7和Win10环境下测试功能完整可用，其他环境壁纸修改可能失效
 
 ## 📄免责声明：
+
 
 程序代码仅修改文件后缀和壁纸图片，完全可控，仅用于应急演练场景和安全学习使用
