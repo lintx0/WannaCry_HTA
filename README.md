@@ -2,7 +2,7 @@
 
 ## 🎯 项目简介
 
-WannaCry_HTA 是一个基于 HTA（HTML Application）技术开发的高度仿真 WannaCry 勒索病毒界面模拟程序。该项目完全可控，专为安全研究、应急演练和安全教育场景设计。界面UI参考zR00t1师傅项目编写。
+WannaCry_HTA 是一个基于 HTA（HTML Application）技术开发的高度仿真 WannaCry 勒索病毒界面模拟程序。该项目简单、完全可控，专为安全研究、应急演练和安全教育场景设计。界面UI参考zR00t1师傅项目编写。
 
 
 ## ✨项目亮点：
@@ -73,5 +73,6 @@ WannaCry_HTA 是一个基于 HTA（HTML Application）技术开发的高度仿�
 
 
 程序代码仅修改文件后缀和壁纸图片，完全可控，仅用于应急演练场景和安全学习使用
+
 
 
