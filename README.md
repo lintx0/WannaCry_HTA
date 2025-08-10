@@ -27,7 +27,7 @@ WannaCry_HTA 是一个基于 HTA（HTML Application）技术开发的高度仿�
 
 ## 🚀使用方法：
 
-1、运行ZIP自解压exe，即可实现程序目录下除exe文件外的所有文件均修改后缀名为.WNCRY，并修改桌面壁纸
+1、运行WannaCry_HTA.exe，即可实现程序目录下除exe文件外的所有文件均修改后缀名为.WNCRY，并修改桌面壁纸
 
 2、点击Decrypt按钮即可恢复文件后缀和桌面壁纸
 
@@ -73,3 +73,4 @@ WannaCry_HTA 是一个基于 HTA（HTML Application）技术开发的高度仿�
 
 
 程序代码仅修改文件后缀和壁纸图片，完全可控，仅用于应急演练场景和安全学习使用
+
