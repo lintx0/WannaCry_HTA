@@ -15,7 +15,7 @@ WannaCry_HTA 是一个基于 HTA（HTML Application）技术开发的高度仿�
 
 ## 📁实现功能：
 
-1、基于HTA（HTML Application）编写的高度仿真WannaCry病毒界面
+1、基于HTA（HTML Application）编写的高度仿真WannaCry病毒界面，支持伪动态时间跳动、中英文显示
 
 2、修改桌面背景（通过读取注册表图片地址，替换图片实现，不需要修改注册表）
 
@@ -73,6 +73,7 @@ WannaCry_HTA 是一个基于 HTA（HTML Application）技术开发的高度仿�
 
 
 程序代码仅修改文件后缀和壁纸图片，完全可控，仅用于应急演练场景和安全学习使用
+
 
 
 
